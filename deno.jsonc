@@ -1,0 +1,10 @@
+{
+    "tasks": {
+        "dev": "deno run --watch main.ts"
+    },
+    "imports": {
+        "xirtam": "https://deno.land/x/xirtam@v1.1.4/mod.ts",
+        "keypress": "https://deno.land/x/cliffy@v0.25.7/keypress/mod.ts",
+        "tty": "https://deno.land/x/cliffy@v0.25.7/ansi/tty.ts"
+    }
+}
