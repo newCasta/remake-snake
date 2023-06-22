@@ -1,4 +1,5 @@
 import { Matrix } from 'xirtam'
+import { tty } from 'tty'
 import { CELLS, INITIAL_POS } from '../config/constants.ts'
 import { Apple } from './apple.ts'
 import { Snake } from './snake.ts'
@@ -98,8 +99,32 @@ export class Game {
         }
     }
 
+    private gameOver() {
+        const maxScore = (this._screenWidth - 2) * (this.screenHeight - 2)
+        const hasMaxScore = this._score >= maxScore
+
+        if (hasMaxScore) {
+            if (this._interval) clearInterval(this._interval)
+
+            this._interval = undefined
+
+            console.clear()
+            console.log(`You win, your score is ${this._score}`)
+            console.log('Exit ctrl + c')
+        } else if (this._snake.hasLose) {
+            if (this._interval) clearInterval(this._interval)
+
+            this._interval = undefined
+
+            console.clear()
+            console.log(`You lose, your score is ${this._score}`)
+            console.log('Exit ctrl + c')
+        }
+    }
+
     private update(): void {
         console.clear()
+        this.gameOver()
         this._snake.update()
         this._apple.update()
         this.drawScreen()
@@ -108,6 +133,8 @@ export class Game {
 
     run(): void {
         if (!this._interval) {
+            tty.cursorHide()
+
             this._interval = setInterval(() => {
                 this.update()
             }, 100)

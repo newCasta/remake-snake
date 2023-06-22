@@ -7,7 +7,7 @@ export class Snake {
     private _screenWidth
     private _screenHeight
     private _hasEaten
-    private _hasTouchedBodyOrBorder
+    private _hasLose
     private _direction
     private _isInputLoaded
     private _directionHasChanged
@@ -18,18 +18,14 @@ export class Snake {
         this._screenWidth = settings.screenWidth
         this._screenHeight = settings.screenHeight
         this._hasEaten = false
-        this._hasTouchedBodyOrBorder = false
+        this._hasLose = false
         this._direction = DIRECTIONS.LEFT
         this._isInputLoaded = false
         this._directionHasChanged = false
     }
 
-    get hasEaten(): boolean {
-        return this._hasEaten
-    }
-
-    get hasTouchedBodyOrBorder(): boolean {
-        return this._hasTouchedBodyOrBorder
+    get hasLose(): boolean {
+        return this._hasLose
     }
 
     get head(): Cell {
@@ -83,7 +79,7 @@ export class Snake {
 
         this.addBodyPart(head)
 
-        if (!this.hasEaten) this._tail = this.removeBodyPart()
+        if (!this._hasEaten) this._tail = this.removeBodyPart()
 
         this.setHasEaten = false
     }
@@ -143,7 +139,7 @@ export class Snake {
         if (this.isTouchingBody || this.isTouchingBorder) {
             if (this._tail) this.addTail(this._tail)
 
-            this._hasTouchedBodyOrBorder = true
+            this._hasLose = true
             this._isInputLoaded = false
 
             this.removeInput()
