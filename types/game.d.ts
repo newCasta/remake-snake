@@ -1,4 +1,4 @@
 interface GameSettings {
-    width: number
-    height: number
+    screenWidth: number
+    screenHeight: number
 }

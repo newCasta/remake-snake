@@ -1,5 +1,5 @@
-import { Game } from '../classes/game.ts'
-import { Snake } from '../classes/snake.ts'
+import type { Game } from '../classes/game.ts'
+import type { Snake } from '../classes/snake.ts'
 
 export interface AppleSettings {
     snake: Snake

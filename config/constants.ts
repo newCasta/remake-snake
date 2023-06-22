@@ -1,7 +1,7 @@
 import { createCells } from '../utils/funcs.ts'
 
-export const WIDTH = 40
-export const HEIGHT = 20
+export const WIDTH = 42
+export const HEIGHT = 22
 export const CELLS = createCells(WIDTH, HEIGHT)
 
 export const INITIAL_POS = [
