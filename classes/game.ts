@@ -124,10 +124,10 @@ export class Game {
 
     private update(): void {
         console.clear()
-        this.gameOver()
         this._snake.update()
         this._apple.update()
         this.drawScreen()
+        this.gameOver()
         console.log(this._screen.join(''))
     }
 
